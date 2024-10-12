@@ -43,5 +43,5 @@ PlayerObjectBase.csを継承することで使用できる関数や変数です�
 ### OnConnectedとOnReadyについて
 ほとんどの場合OnReadyが適しています。Connectは一応残してあるだけです。isReadyも同様です。
 
-## 再配布など
-MITライセンスに従ってください。
+## 改造や再配布など
+MITライセンスの許す限りどこまでも行ってください。
