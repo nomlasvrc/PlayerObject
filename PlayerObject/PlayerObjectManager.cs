@@ -12,7 +12,9 @@ namespace Nomlas.PlayerObject
         [SerializeField] PlayerObjectBase playerObjectBase;
         public PlayerObject localPlayerObject { get; private set; }
         public bool isConnected { get; private set; }
+        public bool isReady { get; private set; }
         private bool isBaseConnected;
+        private bool isPlayerRestored;
 
         void Start()
         {
@@ -24,6 +26,10 @@ namespace Nomlas.PlayerObject
             if (isConnected) //Manager <=> Objectが接続されており、OnConnected()が保留状態
             {
                 playerObjectBase.OnConnected();
+            }
+            if (isConnected && isPlayerRestored) //Restoreが完了しManager <=> Objectが接続されている
+            {
+                playerObjectBase.OnReady();
             }
         }
 
@@ -38,6 +44,16 @@ namespace Nomlas.PlayerObject
             localPlayerObject.RequestPersistence();
         }
 
+        public override void OnPlayerRestored(VRCPlayerApi player)
+        {
+            if (!player.isLocal) return;
+            isPlayerRestored = true;
+            if (isConnected && isBaseConnected)
+            {
+                playerObjectBase.OnReady();
+            }
+        }
+
         internal bool ConnectToManager(VRCPlayerApi player, PlayerObject playerObject)
         {
             if (!player.isLocal) return false;
@@ -48,6 +64,10 @@ namespace Nomlas.PlayerObject
                 if (isBaseConnected) //Base <=> Managerが接続されている
                 {
                     playerObjectBase.OnConnected();
+                }
+                if (isBaseConnected && isPlayerRestored) //Restoreが完了しBase <=> Managerが接続されている
+                {
+                    playerObjectBase.OnReady();
                 }
                 return true;
             }
