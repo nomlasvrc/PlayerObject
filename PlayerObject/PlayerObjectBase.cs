@@ -20,7 +20,7 @@ namespace Nomlas.PlayerObject
         private PlayerObjectManager manager;
 
         /// <summary>
-        /// 自分のPlayer Objectを返します。
+        /// Local PlayerのPlayer Objectを返します。
         /// </summary>
         public PlayerObject localPlayerObject
         {
@@ -36,7 +36,7 @@ namespace Nomlas.PlayerObject
         }
 
         /// <summary>
-        /// 自分のPlayer Objectが準備できたかどうか。
+        /// Local PlayerのPlayer Objectが準備できたかどうか。
         /// </summary>
         public bool isConnected
         {
@@ -52,7 +52,7 @@ namespace Nomlas.PlayerObject
         }
 
         /// <summary>
-        /// 自分のPlayer Objectが準備できたかどうか。
+        /// Local PlayerのPlayer Objectが準備できたかどうか。
         /// </summary>
         public bool isReady
         {
@@ -75,7 +75,7 @@ namespace Nomlas.PlayerObject
         public virtual void OnDataUpdated(VRCPlayerApi player) { }
 
         /// <summary>
-        /// 自分のPlayer Objectの準備が完了したときに呼び出されます。
+        /// Local PlayerのPlayer Objectの準備が完了したときに呼び出されます。
         /// 値は同期していない可能性があります。
         /// </summary>
         public virtual void OnConnected() { }
