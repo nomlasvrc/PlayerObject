@@ -9,7 +9,7 @@ namespace Nomlas.PlayerObject
     {
         /// <summary>
         /// これは内部用変数です。
-        /// Player Object Managerとの接続が完了したかどうか。
+        /// Player Object Managerとの接続が完了したか。
         /// </summary>
         private bool isManagerConnected;
 
@@ -36,7 +36,7 @@ namespace Nomlas.PlayerObject
         }
 
         /// <summary>
-        /// Local PlayerのPlayer Objectが準備できたかどうか。
+        /// Local PlayerのPlayer Objectが作成されたか。
         /// </summary>
         public bool isConnected
         {
@@ -52,7 +52,7 @@ namespace Nomlas.PlayerObject
         }
 
         /// <summary>
-        /// Local PlayerのPlayer Objectが準備できたかどうか。
+        /// Local PlayerのPlayer Objectが準備できたか。
         /// </summary>
         public bool isReady
         {
@@ -75,8 +75,7 @@ namespace Nomlas.PlayerObject
         public virtual void OnDataUpdated(VRCPlayerApi player) { }
 
         /// <summary>
-        /// Local PlayerのPlayer Objectの準備が完了したときに呼び出されます。
-        /// 値は同期していない可能性があります。
+        /// Local PlayerのPlayer Objectが作成されたときに呼び出されます。
         /// </summary>
         public virtual void OnConnected() { }
 
