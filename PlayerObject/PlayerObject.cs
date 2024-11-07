@@ -34,7 +34,7 @@ namespace Nomlas.PlayerObject
 
         private void Start()
         {
-            owner = Networking.GetOwner(gameObject);
+            owner = Networking.GetOwner(this.gameObject);
             manager.ConnectToManager(owner, this);
         }
 

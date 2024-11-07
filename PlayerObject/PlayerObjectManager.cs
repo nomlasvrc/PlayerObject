@@ -9,7 +9,7 @@ namespace Nomlas.PlayerObject
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class PlayerObjectManager : UdonSharpBehaviour
     {
-        [SerializeField] PlayerObjectBase playerObjectBase;
+        [SerializeField] PlayerObjectBase connectTarget;
         public PlayerObject localPlayerObject { get; private set; }
         public bool isConnected { get; private set; }
         public bool isReady { get; private set; }
@@ -18,24 +18,24 @@ namespace Nomlas.PlayerObject
 
         void Start()
         {
-            if (!Utilities.IsValid(playerObjectBase))
+            if (!Utilities.IsValid(connectTarget))
             {
-                Debug.LogError("Managerにスクリプトが指定されていません!");
+                Debug.LogError("Managerに接続するコンポーネントが指定されていません!");
             }
-            isBaseConnected = playerObjectBase.SetManager(this);
+            isBaseConnected = connectTarget.SetManager(this);
             if (isConnected) //Manager <=> Objectが接続されており、OnConnected()が保留状態
             {
-                playerObjectBase.OnConnected();
+                connectTarget.OnConnected();
             }
             if (isConnected && isPlayerRestored) //Restoreが完了しManager <=> Objectが接続されている
             {
-                playerObjectBase.OnReady();
+                connectTarget.OnReady();
             }
         }
 
         internal void OnDataUpdated(VRCPlayerApi player)
         {
-            playerObjectBase.OnDataUpdated(player);
+            connectTarget.OnDataUpdated(player);
         }
 
         internal void RequestPersistence()
@@ -50,7 +50,7 @@ namespace Nomlas.PlayerObject
             isPlayerRestored = true;
             if (isConnected && isBaseConnected)
             {
-                playerObjectBase.OnReady();
+                connectTarget.OnReady();
             }
         }
 
@@ -58,20 +58,18 @@ namespace Nomlas.PlayerObject
         {
             if (!player.isLocal) return false;
             localPlayerObject = playerObject;
-            if (Utilities.IsValid(localPlayerObject))
+            if (!Utilities.IsValid(localPlayerObject)) return false;
+            
+            isConnected = true;
+            if (isBaseConnected) //Base <=> Managerが接続されている
             {
-                isConnected = true;
-                if (isBaseConnected) //Base <=> Managerが接続されている
-                {
-                    playerObjectBase.OnConnected();
-                }
-                if (isBaseConnected && isPlayerRestored) //Restoreが完了しBase <=> Managerが接続されている
-                {
-                    playerObjectBase.OnReady();
-                }
-                return true;
+                connectTarget.OnConnected();
             }
-            return false;
+            if (isBaseConnected && isPlayerRestored) //Restoreが完了しBase <=> Managerが接続されている
+            {
+                connectTarget.OnReady();
+            }
+            return true;
         }
     }
 }
