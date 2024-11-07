@@ -38,7 +38,7 @@ namespace Nomlas.PlayerObject
             connectTarget.OnDataUpdated(player);
         }
 
-        internal void RequestPersistence()
+        public void RequestPersistence()
         {
             if (!isConnected) return;
             localPlayerObject.RequestPersistence();
@@ -59,7 +59,7 @@ namespace Nomlas.PlayerObject
             if (!player.isLocal) return false;
             localPlayerObject = playerObject;
             if (!Utilities.IsValid(localPlayerObject)) return false;
-            
+
             isConnected = true;
             if (isBaseConnected) //Base <=> Managerが接続されている
             {
