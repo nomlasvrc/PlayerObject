@@ -26,11 +26,8 @@ namespace Nomlas.PlayerObject
         {
             get
             {
-                if (isManagerConnected)
-                {
-                    return manager.localPlayerObject;
-                }
-                else { return null; }
+                if (!isManagerConnected) return null;
+                return manager.localPlayerObject;
             }
             private set { }
         }
@@ -42,11 +39,8 @@ namespace Nomlas.PlayerObject
         {
             get
             {
-                if (isManagerConnected)
-                {
-                    return manager.isConnected;
-                }
-                else { return false; }
+                if (!isManagerConnected) return false;
+                return manager.isConnected;
             }
             private set { }
         }
@@ -58,11 +52,8 @@ namespace Nomlas.PlayerObject
         {
             get
             {
-                if (isManagerConnected)
-                {
-                    return manager.isReady;
-                }
-                else { return false; }
+                if (isManagerConnected) return false;
+                return manager.isReady;
             }
             private set { }
         }
