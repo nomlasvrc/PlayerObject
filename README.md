@@ -24,7 +24,6 @@ PlayerObjectBase.csを継承することで使用できる関数や変数です�
 ### プロパティ
 <table><thead><tr><th>名前</th><th>説明</th></tr></thead>
 <tr><td>localPlayerObject</td><td>Local PlayerのPlayer Objectを返します。</td></tr>
-<tr><td>isConnected</td><td>Local PlayerのPlayer Objectが作成されたかを返します。</td></tr>
 <tr><td>isReady</td><td>Local PlayerのPlayer Objectが準備できたかを返します。</td></tr>
 </table>
 
@@ -36,12 +35,8 @@ PlayerObjectBase.csを継承することで使用できる関数や変数です�
 ### イベント
 <table><thead><tr><th>名前</th><th>引数</th><th>説明</th></tr></thead>
 <tr><td>OnDataUpdated</td><td>VRCPlayerApi player</td><td>データが更新されたときに呼び出されます。値が変わっていなくても呼び出されることに注意してください。</td></tr>
-<tr><td>OnConnected</td><td>-</td><td>Local PlayerのPlayer Objectが作成されたときに呼び出されます。値は同期していない可能性があります。</td></tr>
 <tr><td>OnReady</td><td>-</td><td>準備が完了したときに呼び出されます。</td></tr>
 </table>
-
-### OnConnectedとOnReadyについて
-ほとんどの場合OnReadyが適しています。Connectは一応残してあるだけです。isReadyも同様です。
 
 ## 改造や再配布など
 MITライセンスの許す範囲でどこまでも行ってください。

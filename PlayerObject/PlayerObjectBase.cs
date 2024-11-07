@@ -33,19 +33,6 @@ namespace Nomlas.PlayerObject
         }
 
         /// <summary>
-        /// Local PlayerのPlayer Objectが作成されたか。
-        /// </summary>
-        public bool isConnected
-        {
-            get
-            {
-                if (!isManagerConnected) return false;
-                return manager.isConnected;
-            }
-            private set { }
-        }
-
-        /// <summary>
         /// Local PlayerのPlayer Objectが準備できたか。
         /// </summary>
         public bool isReady
@@ -64,11 +51,6 @@ namespace Nomlas.PlayerObject
         /// </summary>
         /// <param name="player"></param>
         public virtual void OnDataUpdated(VRCPlayerApi player) { }
-
-        /// <summary>
-        /// Local PlayerのPlayer Objectが作成されたときに呼び出されます。
-        /// </summary>
-        public virtual void OnConnected() { }
 
         /// <summary>
         /// 準備が完了したときに呼び出されます。
