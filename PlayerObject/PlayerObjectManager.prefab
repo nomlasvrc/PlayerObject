@@ -56,7 +56,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 3855680113431042647}
-  playerObjectBase: {fileID: 0}
+  connectTarget: {fileID: 0}
 --- !u!114 &3855680113431042647
 MonoBehaviour:
   m_ObjectHideFlags: 0
