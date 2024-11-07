@@ -7,8 +7,6 @@ using VRC.Udon;
 
 namespace Nomlas.PlayerObjectAddon
 {
-    [RequireComponent(typeof(VRCPlayerObject))]
-    [RequireComponent(typeof(VRCEnablePersistence))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class PlayerObjectAddon : UdonSharpBehaviour
     {
